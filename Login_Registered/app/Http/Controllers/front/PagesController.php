@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\front;
+use App\Models\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -23,7 +24,9 @@ public function dash(){
     return view('admin_app.dash');
 }
 public function user(){
-    return view('admin_app.user');
+    $allUsers = User::all(); // Fetch all users
+
+    return view('admin_app.user', compact('allUsers')); // Pass to view
 }
 public function setting(){
     return view('admin_app.setting');

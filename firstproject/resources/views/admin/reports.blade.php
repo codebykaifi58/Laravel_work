@@ -1,9 +1,9 @@
-@extends('admin_app.admin_layout.app_admin')
+@extends('admin.admin_nav.adminNav')
 
 @section('content')
 
 <main class="main-content">
-    <h1>Users</h1>
+    <h1>Reports</h1>
 
     <div class="card-container">
       <div class="card">
@@ -30,15 +30,24 @@
         </tr>
       </thead>
       <tbody>
-        @foreach($allUsers as $user)
         <tr>
-          <td>{{ $user->id}}</td>
-         
-            <td>{{ $user->name }}</td>
-            <td>{{ $user->email }}</td>
+          <td>Jane Doe</td>
+          <td>jane@example.com</td>
+          <td>Active</td>
+          <td>Admin</td>
         </tr>
-      
-      @endforeach
+        <tr>
+          <td>John Smith</td>
+          <td>john@example.com</td>
+          <td>Inactive</td>
+          <td>User</td>
+        </tr>
+        <tr>
+          <td>Alice Brown</td>
+          <td>alice@example.com</td>
+          <td>Active</td>
+          <td>Moderator</td>
+        </tr>
       </tbody>
     </table>
 
