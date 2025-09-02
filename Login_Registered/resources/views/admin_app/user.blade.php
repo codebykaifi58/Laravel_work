@@ -36,6 +36,7 @@
          
             <td>{{ $user->name }}</td>
             <td>{{ $user->email }}</td>
+            <td><button>Delete</button> <button>Update</button></td>
         </tr>
       
       @endforeach

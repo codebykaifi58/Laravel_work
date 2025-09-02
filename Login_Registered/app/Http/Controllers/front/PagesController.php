@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\front;
 use App\Models\User;
+use App\Models\Category;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -28,6 +29,37 @@ public function user(){
 
     return view('admin_app.user', compact('allUsers')); // Pass to view
 }
+
+public function category(){
+    // $allUsers = User::all(); // Fetch all users
+$category=Category::ALL();
+    return view('admin_app.category' , compact('category')); // Pass to view
+}
+public function addproduct(){
+    return view('admin_app.addproduct'); // Pass to view
+}
+public function allproduct(){
+    return view('admin_app.allproduct'); // Pass to view
+}
+public function addcategory(Request $request ){
+    // $allUsers = User::all(); // Fetch all users
+
+     $request->validate([
+            'categoryName' => 'required',
+           
+        ]);
+
+        Category::Create([
+            'name' => $request->categoryName
+        ]);
+
+
+
+    return redirect()->back()->with('success',"Category Added Successfuly"); // Pass to view
+
+}
+
+
 public function setting(){
     return view('admin_app.setting');
 }

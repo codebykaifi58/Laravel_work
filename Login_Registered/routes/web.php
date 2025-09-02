@@ -20,6 +20,14 @@ Route::get('/shop', [PagesController::class, 'shop'])->name('shop');
 Route::get('/contact', [PagesController::class, 'contact'])->name('contact');
 Route::get('/dash', [PagesController::class, 'dash'])->name('dash');
 Route::get('/user', [PagesController::class, 'user'])->name('user');
+
+//  for categories 
+Route::get('/category', [PagesController::class, 'category'])->name('category');
+Route::post('/addcategory', [PagesController::class, 'addcategory'])->name('addcategory');
+// for products
+Route::get('/addproduct', [PagesController::class, 'addproduct'])->name('addproduct');
+Route::get('/allproduct', [PagesController::class, 'allproduct'])->name('allproduct');
+
 Route::get('/setting', [PagesController::class, 'setting'])->name('setting');
 Route::get('/reports', [PagesController::class, 'reports'])->name('reports');
 
