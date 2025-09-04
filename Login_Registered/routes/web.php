@@ -24,6 +24,10 @@ Route::get('/user', [PagesController::class, 'user'])->name('user');
 //  for categories 
 Route::get('/category', [PagesController::class, 'category'])->name('category');
 Route::post('/addcategory', [PagesController::class, 'addcategory'])->name('addcategory');
+
+// for practice 
+Route::get('/category2', [PagesController::class, 'category2'])->name('category2');
+Route::post('addcategory2', [PagesController::class, 'addcategory2'])->name('addcategory2');
 // for products
 Route::get('/addproduct', [PagesController::class, 'addproduct'])->name('addproduct');
 Route::get('/allproduct', [PagesController::class, 'allproduct'])->name('allproduct');
