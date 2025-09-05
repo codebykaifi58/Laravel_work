@@ -39,7 +39,7 @@
       <tr>
         <th>#</th>
         <th>Category Name</th>
-        <th>Actions</th>
+        <th>Actis</th>
       </tr>
     </thead>
     <tbody id="categoryTableBody">

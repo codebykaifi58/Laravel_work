@@ -6,6 +6,8 @@ use App\Models\Category;
 use App\Models\category2;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Product;
+
 
 class PagesController extends Controller
 {
@@ -49,8 +51,40 @@ $category=Category::ALL();
     return view('admin_app.category' , compact('category')); // Pass to view
 }
 public function addproduct(){
-    return view('admin_app.addproduct'); // Pass to view
+    $category=Category::ALL();
+    $product=Product::All();
+    return view('admin_app.addproduct', compact('category','product')); // Pass to view
 }
+
+public function addproductstore(request $request){
+    $request->validate([
+        'productName'=>'required',
+        'productCategory'=>'required',
+        'productName'=>'required',
+        'productFreshness'=>'required',
+        'productImage'=>'required',
+        'productDescription'=>'required',
+        'productPrice'=>'required',
+    ]);
+
+$imagepath=null;
+if($request->hasfile('productImage')){
+    $imagepath= $request->file('productImage')->store('products','public');
+}
+
+Product::create([
+    'name'=>$request->productName,
+    'category_id'=>$request->productCategory,
+    'productFreshness'=>$request->productFreshness,
+    'productImage'=>$imagepath,
+    'productDescription'=>$request->productDescription,
+    'productPrice'=>$request->productPrice,
+]);
+ return redirect()->back()->with('success', 'Product added successfully!');
+
+}
+
+
 public function allproduct(){
     return view('admin_app.allproduct'); // Pass to view
 }

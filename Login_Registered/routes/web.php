@@ -30,6 +30,8 @@ Route::get('/category2', [PagesController::class, 'category2'])->name('category2
 Route::post('addcategory2', [PagesController::class, 'addcategory2'])->name('addcategory2');
 // for products
 Route::get('/addproduct', [PagesController::class, 'addproduct'])->name('addproduct');
+Route::post('/add-store-product', [PagesController::Class,'addproductstore'])->name('addproductstore');
+
 Route::get('/allproduct', [PagesController::class, 'allproduct'])->name('allproduct');
 
 Route::get('/setting', [PagesController::class, 'setting'])->name('setting');

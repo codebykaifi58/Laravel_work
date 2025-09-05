@@ -14,8 +14,8 @@
 
 <div class="container mt-5">
   <h2>Add New Product</h2>
-  <form action="#" method="POST" enctype="multipart/form-data" class="mt-4">
-
+  <form action="{{route('addproductstore')}}" method="POST" enctype="multipart/form-data" class="mt-4">
+ @csrf
     <!-- Product Name -->
     <div class="mb-3">
       <label for="productName" class="form-label">Product Name</label>
@@ -27,9 +27,10 @@
       <label for="productCategory" class="form-label">Product Category</label>
       <select class="form-select" id="productCategory" name="productCategory" required>
         <option value="">Select Category</option>
-        <option value="electronics">Electronics</option>
-        <option value="clothing">Clothing</option>
-        <option value="furniture">Furniture</option>
+        @foreach($category as $category)
+        <option value="{{ $category->id }}">{{$category->name}}</option>
+     
+     @endforeach 
       </select>
     </div>
 
@@ -38,15 +39,15 @@
       <label class="form-label">Product Freshness</label>
       <div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="productFreshness" id="brandNew" value="Brand New" required>
-          <label class="form-check-label" for="brandNew">Brand New</label>
+          <input class="form-check-input"  value="Brandnew" type="radio" name="productFreshness" id="brandNew" value="Brand New" required>
+          <label class="form-check-label"  for="brandNew">Brand New</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="productFreshness" id="secondHand" value="Second Hand">
+          <input class="form-check-input" value="Brandnew" type="radio" name="productFreshness" id="secondHand" value="Second Hand">
           <label class="form-check-label" for="secondHand">Second Hand</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="productFreshness" id="refurbished" value="Refurbished">
+          <input class="form-check-input" type="radio" value="refurbished" name="productFreshness" id="refurbished" value="Refurbished">
           <label class="form-check-label" for="refurbished">Refurbished</label>
         </div>
       </div>
@@ -74,6 +75,31 @@
     <button type="submit" class="btn btn-primary">Submit Product</button>
   </form>
 </div>
+
+
+<!-- fetch products -->
+<div class="container">
+  <div class="row">
+    @foreach($product as $product)
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+      <img src="{{ asset('storage/' . $product->productImage) }}" class="card-img-top" alt="{{ $product->name }}">
+
+          <div class="card-body">
+            <h5 class="card-title">{{ $product->name }}</h5>
+            <p class="text-dark">{{$product->productCategory}}</p>
+            <p class="card-text">{{ Str::limit($product->description, 100) }}</p>
+          </div>
+          <div class="card-footer">
+            <span class="text-muted">Price: ${{ $product->productPrice }}</span>
+          </div>
+        </div>
+      </div>
+    @endforeach
+  </div>
+</div>
+
+
 
 </body>
 </html>
